@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zerock.mapper.CrudBoardMapper">
+
+	<select id="getList" resultType="org.zerock.domain.CrudBoardVO">
+		<![CDATA[
+			select * from crud_board where bno > 0
+		]]>
+	</select>
+	
+	<select id="getWithPaing" resultType="org.zerock.domain.CrudBoardVO">
+		<![CDATA[
+			select * from crud_board where bno > 0
+		]]>
+	</select>
+	
+	<select id="read" resultType="org.zerock.domain.CrudBoardVO">
+		select * from crud_board where bno = #{bno}
+	</select>
+	
+	<update id="update">
+		update crud_board
+		set title=#{title}
+		  , content=#{content}
+  		, updatedate=sysdate()
+		where bno=#{bno} 
+	</update>
+	
+	<insert id="insert">
+		insert into crud_board(title,content,writer) 
+		values(#{title},#{content},#{writer})
+	</insert>
+	
+	<insert id="insertSelectKey">
+		<selectKey keyProperty="bno" order="BEFORE" resultType="int">
+			select max(bno)+1 bno from crud_board
+		</selectKey>
+		
+		insert into crud_board(bno,title,content,writer) 
+		values(#{bno},#{title},#{content},#{writer})
+	</insert>
+	
+</mapper>
