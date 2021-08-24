@@ -60,6 +60,11 @@ public class CrudController {
 		return "redirect:/crud/crudGet";
 	}
 	//삭제 버튼클릭시 
+	@PostMapping(value="crudRemove")
+	public String crudRemove(@RequestParam("bno")int bno) {
+		service.remove(bno);
+		return "redirect:/crud/crudList";
+	}
 	
 }
 

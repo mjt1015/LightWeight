@@ -40,8 +40,7 @@ public class CrudServiceImpl implements CrudService{
 		return mapper.update(cboard);
 	}
 	// 삭제버튼?
-	public boolean delete(int bno) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean remove(int bno) {
+		return mapper.delete(bno);
 	}
 }

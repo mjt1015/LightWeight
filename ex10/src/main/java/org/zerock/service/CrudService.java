@@ -14,9 +14,8 @@ public interface CrudService {
 	public ArrayList<CrudBoardVO> getWithPaing();
 	// 상세 페이지
 	public CrudBoardVO get(int bno);
-	// 글수정
+	// 글수정 boolean타입 사용이유는 수정과 삭제시 정상적으로 작동했을경우 알림창을 띄우기 위해서
 	public boolean modify(CrudBoardVO cboard);
-	// 글삭제
-	public boolean delete(int bno);
-	
+	// 글삭제 
+	public boolean remove(int bno);
 }
