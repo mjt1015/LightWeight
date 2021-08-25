@@ -22,7 +22,7 @@ public class ReplyServiceImpl implements ReplyService{
 	// 댓글쓰기 여기에 트랜젝션을 주는 이유는 댓글작성이 성공일때 댓글 수+1이 업데이트 되어야하기 때문에
 	@Transactional
 	public int replyWrite(ReplyVO vo) {
-		cbmapper.updateReplyview(vo.getBno(), 1);
+		cbmapper.updateReplyview(vo.getBno(),1);
 		return rmapper.replyWrite(vo);
 	}
 	// 댓글수정

@@ -46,6 +46,12 @@
 		delete from crud_board where bno=#{bno}
 	</delete>
 	
+	<update id="updateReplyview">
+		update crud_board
+		set replyview=replyview + #{amount}
+		where bno=#{bno}
+	</update>
+	
 </mapper>
 
 

@@ -48,6 +48,9 @@
 	</table>
 </form>
 <div>
+	<ul id="replyList"></ul>
+</div>
+<div>
 	<textarea rows="3" cols="30" id="reply"></textarea>
 	<button id="replyadd">댓글 작성</button>
 </div>
