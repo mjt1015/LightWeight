@@ -11,6 +11,7 @@ public class ReplyVO {
 	private String replyer;
 	private Date replydate;
 	private Date updatedate;
+	
 	public int getRno() {
 		return rno;
 	}
@@ -52,5 +53,4 @@ public class ReplyVO {
 		return "ReplyVO [rno=" + rno + ", bno=" + bno + ", reply=" + reply + ", replyer=" + replyer + ", replydate="
 				+ replydate + ", updatedate=" + updatedate + "]";
 	}
-	
 }

@@ -4,8 +4,6 @@
 // 호출
 $(document).ready(function(){
 	var bno=$("#bno").val();
-	var replyer=$("#writer").val();
-	
 	showList();
 	
 	function showList(){
@@ -13,11 +11,11 @@ $(document).ready(function(){
 				{bno:bno},
 				function(list){
 					var str="";
-					for(var i=0; i<list.lenght;i++){
+					for(var i=0; i<list.length;i++){
 						str+="<li>"+list[i].replyer+"</li>"
 						str+="<li><textarea rows='3' col='30' id='modreply"+list[i].rno+"'>"+list[i].reply+"</textarea></li>"
 						str+="<li>"+list[i].replydate+"</li>"
-						str+="<li><button class='replymod' id='replymod' data-rno='"+list[i].rno+"'>댓글수정</button><button class='replydel' data-rno='"+list[i].rno+"'>댓글삭제</button></li>"
+						str+="<li><button class='replymod' id='replymod' data-rno='"+list[i].rno+"'>댓글수정</button><button class='replydel' id='replydel' data-rno='"+list[i].rno+"'>댓글삭제</button></li><hr>"
 					}
 					$("#replyList").html(str)
 				}
@@ -28,14 +26,41 @@ $(document).ready(function(){
 	$("#replyadd").click(function(e){
 		// 댓글값가져오기
 		var reply=$("#reply").val();
+		// 댓글작성자가져오기
+		var replyer=$("#reWriter").val();
 		replyService.add(
 				{reply:reply,replyer:replyer,bno:bno},
 				function(result){	// 정상처리 후 작업(callback)
 					showList();
 				}
 		);
-	});
+	}); //댓글 작성끝
+	// 댓글 수정 $("#replyList").on("click",".replymod",function(e)) 이렇게 정확히 지정해주어야 replyList가 막지않고 클릭버튼을 실행할수있다
+	$("#replyList").on("click",".replymod",function(e){
+		console.log("수정클릭");
+		
+		var rno=$(this).data("rno");
+		var reply=$("#modreply"+rno).val();
+		replyService.update(
+			{reply:reply,rno:rno},
+			function(result){
+				alert("수정");
+				showList();
+			}
+		)
+	})
 	
+	// 댓글삭제 	수정과 마찬가지로 정확하게 지정해주어야한다
+	$("#replyList").on("click",".replydel",function(e){
+		var rno=$(this).data("rno");
+		replyService.remove(
+			rno,
+			function(result){
+				alert("댓글이 삭제되었습니다");
+				showList();
+			}
+		)
+	})
 	
 })
 // 선언
@@ -77,9 +102,51 @@ var replyService=(function(){
 		});
 	}// getList함수 끝
 	
+	// update함수 끝
+	function update(reply,callback,error){
+		$.ajax({
+			type:"put",
+			url:"/reply/"+reply.rno,
+			data:JSON.stringify(reply),
+			contentType:"application/json; charset=utf-8",
+			success:function(result,status,xhr){
+				if(callback){
+					callback(result);
+				}
+			},
+			error : function(xhr,status,er){
+				if(error){
+					error(er);
+				}
+			}
+		})
+	}
+	
+	//remove 시작
+	function remove(rno,callback,error){
+		console.log("del reply");
+		$.ajax({
+			type:"delete",
+			url:"/reply/"+rno,
+			success:function(result,status,xhr){
+				if(callback){
+					callback(result);
+				}
+			},
+			error : function(xhr,status,er){
+				if(error){
+					error(er);
+				}
+			}
+		})
+	} // remove 끝
+	
 	return{
 		add:add,
-		getList:getList
+		getList:getList,
+		update:update,
+		remove:remove
+		
 	};
 })();
 

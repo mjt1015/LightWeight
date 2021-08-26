@@ -12,5 +12,5 @@ public interface ReplyMapper {
 	// 댓글수정
 	public int replyModify(ReplyVO vo);
 	// 댓글삭제 
-	public int replyRemove(int bno);
+	public int replyRemove(int rno);
 }

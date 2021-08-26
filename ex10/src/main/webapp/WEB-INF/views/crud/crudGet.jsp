@@ -51,7 +51,8 @@
 	<ul id="replyList"></ul>
 </div>
 <div>
-	<textarea rows="3" cols="30" id="reply"></textarea>
+	<textarea rows="3" cols="30" id="reply"></textarea><br>
+	작성자 : <input type="text" id="reWriter">
 	<button id="replyadd">댓글 작성</button>
 </div>
 </body>
