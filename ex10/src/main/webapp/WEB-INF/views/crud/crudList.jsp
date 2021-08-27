@@ -17,6 +17,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<form method="get">
 	<table class="table table-bordered" id="dataTable">
 		<tr>
 			<td>번호</td><td>제목</td><td>작성자</td><td>작성일</td><td>수정일</td>
@@ -31,9 +32,11 @@
 			<td>${board.updatedate}</td>
 		</tr>
 		</c:forEach>
-		 
+		 <tr>
+		 	<td><input type="submit" value="글쓰기" formaction="crudWrite"></td>
+		 </tr>
 	</table>
-	
+</form>
 	
 	
 	

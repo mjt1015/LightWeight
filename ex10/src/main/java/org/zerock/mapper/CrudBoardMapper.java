@@ -18,4 +18,6 @@ public interface CrudBoardMapper {
 	public boolean delete(int bno);
 	// 댓글수 업데이트
 	public void updateReplyview(@Param("bno")int bno,@Param("amount")int amount);
+	// 페이징처리
+	public int getTotalCount(Basic bas);
 }

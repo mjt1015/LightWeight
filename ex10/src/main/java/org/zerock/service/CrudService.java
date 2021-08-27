@@ -18,4 +18,6 @@ public interface CrudService {
 	public boolean modify(CrudBoardVO cboard);
 	// 글삭제 
 	public boolean remove(int bno);
+	// 글목록 리스트와 페이징
+	public int getTotalCount(Basic bas);
 }

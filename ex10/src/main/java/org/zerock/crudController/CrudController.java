@@ -19,6 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.domain.Basic;
 import org.zerock.domain.CrudAttachVO;
 import org.zerock.domain.CrudBoardVO;
+import org.zerock.domain.PageDTO;
 import org.zerock.service.CrudService;
 
 @Controller
@@ -42,7 +43,9 @@ public class CrudController {
 	@RequestMapping(value="crudList", method = {RequestMethod.GET, RequestMethod.POST})
 	public void list(Model model,Basic bas) {
 		logger.info("list");
+		int count=service.getTotalCount(bas);
 		model.addAttribute("list", service.getWithPaing());
+		model.addAttribute("pageMaker", new PageDTO(bas,count));
 	}
 	// 게시판 상세페이지
 	@GetMapping(value="crudGet")

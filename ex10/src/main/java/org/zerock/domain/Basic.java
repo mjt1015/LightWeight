@@ -18,11 +18,11 @@ public class Basic {
 		this.amount=amount;
 	}
 	
-	public int getPagaNum() {
+	public int getPageNum() {
 		return pageNum;
 	}
-	public void setPagaNum(int pagaNum) {
-		this.pageNum = pagaNum;
+	public void setPageNum(int pageNum) {
+		this.pageNum = pageNum;
 	}
 	public int getAmount() {
 		return amount;

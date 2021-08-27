@@ -52,6 +52,11 @@
 		where bno=#{bno}
 	</update>
 	
+	<select id="getTotalCount" resultType="int">
+		select count(*)
+		from crud_board
+	</select>
+	
 </mapper>
 
 

@@ -43,4 +43,7 @@ public class CrudServiceImpl implements CrudService{
 	public boolean remove(int bno) {
 		return mapper.delete(bno);
 	}
+	public int getTotalCount(Basic bas) {
+		return mapper.getTotalCount(bas);
+	}
 }
