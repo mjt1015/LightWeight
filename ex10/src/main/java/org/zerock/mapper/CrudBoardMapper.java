@@ -12,7 +12,7 @@ public interface CrudBoardMapper {
 	public void insertSelectKey(CrudBoardVO cboard);
 	public void insert(CrudBoardVO board);
 	// 페이징
-	public ArrayList<CrudBoardVO> getWithPaing();
+	public ArrayList<CrudBoardVO> getWithPaing(Basic bas);
 	public CrudBoardVO read(int bno);
 	public boolean update(CrudBoardVO cboard);
 	public boolean delete(int bno);

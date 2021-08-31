@@ -10,10 +10,31 @@
 		]]>
 	</select>
 	
-	<select id="getWithPaing" resultType="org.zerock.domain.CrudBoardVO">
-		<![CDATA[
-			select * from crud_board where bno > 0
-		]]>
+		<select id="getWithPaing" resultType="org.zerock.domain.CrudBoardVO">
+		select bno, title, content, writer,regdate, updatedate,replyview from
+		(select @rownum:=@rownum+1 as rownum, bno, title, content, writer,regdate, updatedate,replyview
+		from (select @rownum:=0) as rownum
+		, crud_board
+		
+		<choose>
+			<when test="type=='TC'">
+	        	where title like concat('%',#{keyword},'%') or content like concat('%',#{keyword},'%')
+        	</when>
+        	<when test="type=='TW'">
+        		where title like concat('%',#{keyword},'%') or writer like concat('%',#{keyword},'%')
+        	</when>
+        	<when test="type=='CW'">
+        		where content like concat('%',#{keyword},'%') or writer like concat('%',#{keyword},'%')
+        	</when>
+        	<when test="type=='TCW'">
+        		where title like concat('%',#{keyword},'%') or content like concat('%',#{keyword},'%') or writer like concat('%',#{keyword},'%')
+        	</when>
+		</choose>
+		order by bno desc
+		)pageboard
+	<![CDATA[		
+		where rownum>(#{pageNum}-1)*#{amount} and rownum<=#{pageNum}*#{amount}
+	]]>
 	</select>
 	
 	<select id="read" resultType="org.zerock.domain.CrudBoardVO">
@@ -51,6 +72,25 @@
 		set replyview=replyview + #{amount}
 		where bno=#{bno}
 	</update>
+	
+	<select id="getTotalCount" resultType="int">
+		select count(*)
+		from crud_board
+		<choose>
+			<when test="type=='TC'">
+	        	where title like concat('%',#{keyword},'%') or content like concat('%',#{keyword},'%')
+        	</when>
+        	<when test="type=='TW'">
+        		where title like concat('%',#{keyword},'%') or writer like concat('%',#{keyword},'%')
+        	</when>
+        	<when test="type=='CW'">
+        		where content like concat('%',#{keyword},'%') or writer like concat('%',#{keyword},'%')
+        	</when>
+        	<when test="type=='TCW'">
+        		where title like '%작성%' or content like concat('%',#{keyword},'%') or writer like concat('%',#{keyword},'%')
+        	</when>
+		</choose>
+	</select>
 	
 </mapper>
 

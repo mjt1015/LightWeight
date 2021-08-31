@@ -33,12 +33,40 @@
 		</tr>
 		</c:forEach>
 		 <tr>
-		 	<td><input type="submit" value="글쓰기" formaction="crudWrite"></td>
+		 	<td colspan="5"><input type="submit" value="글쓰기" formaction="crudWrite"></td>
 		 </tr>
 	</table>
 </form>
-	
-	
+
+<div class="pull-right">
+	<ul class="pagination">
+		<c:if test="${pageMaker.prev}">
+			<li class="paginate_button previous"><a href="crudList?pageNum=${pageMaker.startPage-1}&amount=${pageMaker.bas.amount}">Previous</a></li>
+		</c:if>
+		<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+			<li class="paginate_button page-item"><a href="crudList?pageNum=${num}&amount=${pageMaker.bas.amount}">${num}</a></li>
+		</c:forEach>
+		<c:if test="${pageMaker.next}">
+			<li class="paginate_button page-item next"><a href="crudList?pageNum=${pageMaker.endPage+1}&amount=${pageMaker.bas.amount}">Next</a></li>
+		</c:if>
+	</ul>
+	</div>
+	<div>
+		<form action="crudList" method="get">
+		<input type="hidden" name="pageNum" value="${pageMaker.bas.pageNum}">
+		<input type="hidden" name="amount" value="${pageMaker.bas.amount}">
+		<select name="type">
+			<option value="">--</option>
+			<option value="TC">제목 or 내용</option>
+			<option value="TW">제목 or 작성자</option>
+			<option value="CW">내용 or 작성자</option>
+			<option value="TCW">제목 or 내용 or 작성자</option>
+		</select>
+		<input type="text" name="keyword">
+		
+		<input type="submit" value="검색">
+		</form>
+	</div>
 	
 	
 	

@@ -15,7 +15,15 @@ public class CrudBoardVO {
 	private Date regdate;
 	// 수정일자
 	private Date updatedate;
+	// 댓글건수
+	private int replyview;
 	
+	public int getReplyview() {
+		return replyview;
+	}
+	public void setReplyview(int replyview) {
+		this.replyview = replyview;
+	}
 	public int getBno() {
 		return bno;
 	}
@@ -57,6 +65,6 @@ public class CrudBoardVO {
 	@Override
 	public String toString() {
 		return "CrudBoardVO [bno=" + bno + ", title=" + title + ", content=" + content + ", writer=" + writer
-				+ ", regdate=" + regdate + ", updatedate=" + updatedate + "]";
+				+ ", regdate=" + regdate + ", updatedate=" + updatedate + ", replyview=" + replyview + "]";
 	}
 }

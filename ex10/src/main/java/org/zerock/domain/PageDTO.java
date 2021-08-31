@@ -11,7 +11,7 @@ public class PageDTO {
 	private boolean next;
 	// 전체 데이터를 저장하는 total변수
 	private int total;
-	// Criteria데이터 저장
+	// Basic데이터 저장
 	private Basic bas;
 	
 	public PageDTO(Basic bas, int total) { // 생성자
@@ -69,11 +69,11 @@ public class PageDTO {
 		this.total = total;
 	}
 
-	public Basic getCri() {
+	public Basic getBas() {
 		return bas;
 	}
 
-	public void setCri(Basic bas) {
+	public void setBas(Basic bas) {
 		this.bas = bas;
 	}
 
@@ -82,7 +82,5 @@ public class PageDTO {
 		return "PageDTO [startPage=" + startPage + ", endPage=" + endPage + ", prev=" + prev + ", next=" + next
 				+ ", total=" + total + ", bas=" + bas + "]";
 	}
-	
-	
 	
 }

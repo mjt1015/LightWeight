@@ -28,8 +28,8 @@ public class CrudServiceImpl implements CrudService{
 		return mapper.getList(bas);
 	}
 	// 글목록+페이징처리 할예정
-	public ArrayList<CrudBoardVO>getWithPaing(){
-		return mapper.getWithPaing();
+	public ArrayList<CrudBoardVO>getWithPaing(Basic bas){
+		return mapper.getWithPaing(bas);
 	}
 	// 상세페이지
 	public CrudBoardVO get(int bno) {

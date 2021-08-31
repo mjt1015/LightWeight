@@ -10,6 +10,8 @@ public class Basic {
 	// 키워드
 	private String keyword;
 	
+	
+	
 	public Basic() {	// 기본생성자
 		this(1,10);
 	}

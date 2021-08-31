@@ -40,11 +40,11 @@ public class CrudController {
 		return "redirect:/crud/crudList"; // 서버에서 서버로 이동
 	}
 	// 게시판리스트
-	@RequestMapping(value="crudList", method = {RequestMethod.GET, RequestMethod.POST})
+	@GetMapping(value="crudList")
 	public void list(Model model,Basic bas) {
 		logger.info("list");
 		int count=service.getTotalCount(bas);
-		model.addAttribute("list", service.getWithPaing());
+		model.addAttribute("list", service.getWithPaing(bas));
 		model.addAttribute("pageMaker", new PageDTO(bas,count));
 	}
 	// 게시판 상세페이지
