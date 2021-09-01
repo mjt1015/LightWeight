@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MainController {
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 	@GetMapping(value="mainHome")
-	public void main0() {
+	public void main() {
 		logger.info("mainHome");
 	}
-	
 }

@@ -44,8 +44,8 @@
                 
                 <div class="login">
                     <ul>
-                        <li><a href="" target="blank">로그인</a></li>
-                        <li><a href="">회원가입</a></li>
+                        <li><a href="/login/join" target="blank">로그인</a></li>
+                        <li><a href="/login/test">회원가입</a></li>
                         <li><a href="">아이디/비밀번호 찾기</a></li>
                     </ul>
                 </div>
@@ -213,7 +213,7 @@
 
                 <div class="video">
                     <h2>몸으로 말한다</h2>
-                    <video src="https://www.youtube.com/embed/Tzv0pMnIHF4" width="100%" height="100%" controls  autoplay='autoplay' muted='muted'></video>
+                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/Tzv0pMnIHF4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
             
